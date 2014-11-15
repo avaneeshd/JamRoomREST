@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-Nov-2014 18:54:08 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Users" table="users" catalog="jamroom">
+        <id name="userId" type="java.lang.Integer">
+            <column name="userID" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="50" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <property name="location" type="string">
+            <column name="location" length="300" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+    </class>
+</hibernate-mapping>

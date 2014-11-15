@@ -1,5 +1,5 @@
 package model;
-// Generated 22-Oct-2014 00:04:03 by Hibernate Tools 3.2.1.GA
+// Generated 07-Nov-2014 18:54:07 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -21,6 +21,10 @@ public class Songs  implements java.io.Serializable {
     public Songs() {
     }
 
+	
+    public Songs(String path) {
+        this.path = path;
+    }
     public Songs(String name, String artist, String location, String genere, Date uploadedOn, String path) {
        this.name = name;
        this.artist = artist;
@@ -72,7 +76,6 @@ public class Songs  implements java.io.Serializable {
     public void setUploadedOn(Date uploadedOn) {
         this.uploadedOn = uploadedOn;
     }
-
     public String getPath() {
         return this.path;
     }
@@ -80,6 +83,8 @@ public class Songs  implements java.io.Serializable {
     public void setPath(String path) {
         this.path = path;
     }
+
+
 
 
 }

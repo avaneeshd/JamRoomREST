@@ -20,7 +20,7 @@
     <property name="order" value="0"/>
 </bean> 
    
-   <mvc:resources mapping="/resources/**" location="file:///C:/Music/"/>
+   <mvc:resources mapping="/resources/**" location="file:/Users/avaneeshdesai/Documents/"/>
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must

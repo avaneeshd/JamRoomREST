@@ -6,6 +6,6 @@
     <property name="keepgenerated" value="true">
       <description>Keep a copy of the generated servlet class' java code.</description>
     </property>
-    <property name="alternatedocroot_1" value="from=/music/* dir=/Users/Avaneesh/Documents/NetBeansProjects/JamRoomREST/" />
+    <property name="alternatedocroot_1" value="from=/music/* dir=/Users/avaneeshdesai/NetBeansProjects/JamRoomREST/" />
   </jsp-config>
 </glassfish-web-app>

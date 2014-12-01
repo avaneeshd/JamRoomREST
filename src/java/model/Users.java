@@ -11,16 +11,17 @@ public class Users  implements java.io.Serializable {
 
      private Integer userId;
      private String username;
-     private String password;
+     private String access_token;
      private String location;
      private String email;
+     
 
     public Users() {
     }
 
-    public Users(String username, String password, String location, String email) {
+    public Users(String username, String access_token, String location, String email) {
        this.username = username;
-       this.password = password;
+       this.access_token = access_token;
        this.location = location;
        this.email = email;
     }
@@ -39,12 +40,12 @@ public class Users  implements java.io.Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getPassword() {
-        return this.password;
+    public String getAccess_token() {
+        return this.access_token;
     }
     
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
     }
     public String getLocation() {
         return this.location;

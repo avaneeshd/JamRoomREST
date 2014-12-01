@@ -11,8 +11,8 @@
         <property name="username" type="string">
             <column name="username" length="50" />
         </property>
-        <property name="password" type="string">
-            <column name="password" />
+        <property name="access_token" type="string">
+            <column name="access_token" />
         </property>
         <property name="location" type="string">
             <column name="location" length="300" />

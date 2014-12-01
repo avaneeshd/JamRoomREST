@@ -44,8 +44,14 @@
     -->
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="index" />
+          p:viewName="upload" />
     
+    <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+    <!-- one of the properties available; the maximum file size in bytes -->
+         <property name="maxUploadSize" value="8832891"/>
+    </bean>
     <context:component-scan base-package="controller" /> 
 
 </beans>

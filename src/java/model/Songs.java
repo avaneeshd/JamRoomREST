@@ -13,11 +13,12 @@ public class Songs  implements java.io.Serializable {
      private Integer songId;
      private String name;
      private String artist;
-     private String location;
+     private Double latitude;
+     private Double longitude;
      private String genere;
      private Date uploadedOn;
      private String path;
-
+     private Integer uploadedBy;
     public Songs() {
     }
 
@@ -25,10 +26,11 @@ public class Songs  implements java.io.Serializable {
     public Songs(String path) {
         this.path = path;
     }
-    public Songs(String name, String artist, String location, String genere, Date uploadedOn, String path) {
+    public Songs(String name, String artist, Double latitude, Double longitude, String genere, Date uploadedOn, String path) {
        this.name = name;
        this.artist = artist;
-       this.location = location;
+       this.latitude = latitude;
+       this.longitude = longitude;
        this.genere = genere;
        this.uploadedOn = uploadedOn;
        this.path = path;
@@ -55,13 +57,22 @@ public class Songs  implements java.io.Serializable {
     public void setArtist(String artist) {
         this.artist = artist;
     }
-    public String getLocation() {
-        return this.location;
+    public Double getLatitude() {
+        return this.latitude;
     }
     
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
+    
+     public Double getLongitude() {
+        return this.longitude;
+    }
+    
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+    
     public String getGenere() {
         return this.genere;
     }
@@ -84,7 +95,13 @@ public class Songs  implements java.io.Serializable {
         this.path = path;
     }
 
-
+    public Integer getUploadedBy() {
+        return this.uploadedBy;
+    }
+    
+    public void setUploadedBy(Integer uploadedBy) {
+        this.uploadedBy = uploadedBy;
+    }
 
 
 }

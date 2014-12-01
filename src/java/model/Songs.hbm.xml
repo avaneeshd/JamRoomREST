@@ -14,14 +14,20 @@
         <property name="artist" type="string">
             <column name="artist" length="200" />
         </property>
-        <property name="location" type="string">
-            <column name="location" length="50" />
+        <property name="latitude" type="double">
+            <column name="latitude" length="50" />
+        </property>
+        <property name="longitude" type="double">
+            <column name="longitude" length="50" />
         </property>
         <property name="genere" type="string">
             <column name="genere" length="50" />
         </property>
         <property name="uploadedOn" type="date">
             <column name="uploadedOn" length="10" />
+        </property>
+        <property name="uploadedBy" type="java.lang.Integer">
+            <column name="uploadedBy" />
         </property>
         <property name="path" type="string">
             <column name="path" length="1000" not-null="true" />

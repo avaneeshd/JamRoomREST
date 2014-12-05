@@ -132,7 +132,7 @@ public class SongsController{
        return null;
    }
    
-    @RequestMapping (method = RequestMethod.GET, value = "/songs/genre/{genreName}")
+   @RequestMapping (method = RequestMethod.GET, value = "/songs/genre/{genreName}")
    public @ResponseBody List getSongsByGenre(@RequestHeader("x-auth-token") String Token, @PathVariable String genreName){
        try{
             boolean isAuthenticated = AuthenticateUser.isAuthenticated(Token);
@@ -157,9 +157,59 @@ public class SongsController{
        return null;
    }
    
+   @RequestMapping (method = RequestMethod.GET, value = "/songs/artist/{artistName}")
+   public @ResponseBody List getSongsByArtist(@RequestHeader("x-auth-token") String Token, @PathVariable String artistName){
+       try{
+            boolean isAuthenticated = AuthenticateUser.isAuthenticated(Token);
+            if(isAuthenticated){     
+                Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+                session.beginTransaction();
+                String[] fav = getFavList(Token);
+                List songsList = session.createQuery("from Songs S Where S.artist LIKE '%"+artistName+"%'").list();
+                for(int i =0 ;i< songsList.size(); i++){
+                    if(Arrays.asList(fav).contains(((Songs)songsList.get(i)).getSongId().toString())){
+                        Songs s = (Songs)songsList.get(i);
+                        s.setIsFav(true);
+                        songsList.set(i, s);
+                    }
+                }
+                return songsList;
+           }
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+       return null;
+   }
+   
+   @RequestMapping (method = RequestMethod.GET, value = "/songs/name/{name}")
+   public @ResponseBody List getSongsByName(@RequestHeader("x-auth-token") String Token, @PathVariable String name){
+       try{
+            boolean isAuthenticated = AuthenticateUser.isAuthenticated(Token);
+            if(isAuthenticated){     
+                Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+                session.beginTransaction();
+                String[] fav = getFavList(Token);
+                List songsList = session.createQuery("from Songs S Where S.name LIKE '%"+name+"%'").list();
+                for(int i =0 ;i< songsList.size(); i++){
+                    if(Arrays.asList(fav).contains(((Songs)songsList.get(i)).getSongId().toString())){
+                        Songs s = (Songs)songsList.get(i);
+                        s.setIsFav(true);
+                        songsList.set(i, s);
+                    }
+                }
+                return songsList;
+           }
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+       return null;
+   }
+   
    private String[] getFavList(String token){
        String favList[] = new String[0];
-       Session session = HibernateUtil.getSessionFactory().openSession();
+       Session session = HibernateUtil.getSessionFactory().getCurrentSession();
        session.beginTransaction();
        String hql = "FROM Users U WHERE U.access_token = '"+ token+ "'";
        Query query = session.createQuery(hql);

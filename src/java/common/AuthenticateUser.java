@@ -18,7 +18,7 @@ import util.HibernateUtil;
 public class AuthenticateUser {
  
   public static boolean isAuthenticated(String Token){
-           Session session = HibernateUtil.getSessionFactory().openSession();
+           Session session = HibernateUtil.getSessionFactory().getCurrentSession();
            session.beginTransaction();
            String hql = "FROM Users U WHERE U.access_token = '"+ Token+"'";
            Query query = session.createQuery(hql);

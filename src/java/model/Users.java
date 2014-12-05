@@ -14,16 +14,17 @@ public class Users  implements java.io.Serializable {
      private String access_token;
      private String location;
      private String email;
-     
+     private String favList;
 
     public Users() {
     }
 
-    public Users(String username, String access_token, String location, String email) {
+    public Users(String username, String access_token, String location, String email, String favList) {
        this.username = username;
        this.access_token = access_token;
        this.location = location;
        this.email = email;
+       this.favList = favList;
     }
    
     public Integer getUserId() {
@@ -61,7 +62,14 @@ public class Users  implements java.io.Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
+    public String getFavList() {
+        return this.favList;
+    }
+    
+    public void setFavList(String favList) {
+        this.favList = favList;
+    }
 
 
 

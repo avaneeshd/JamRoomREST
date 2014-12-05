@@ -32,5 +32,8 @@
         <property name="path" type="string">
             <column name="path" length="1000" not-null="true" />
         </property>
+        <property name="fav_count" type="java.lang.Integer">
+            <column name="fav_count" />
+        </property>
     </class>
 </hibernate-mapping>

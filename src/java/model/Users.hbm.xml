@@ -20,5 +20,8 @@
         <property name="email" type="string">
             <column name="email" />
         </property>
+        <property name="favList" type="string">
+            <column name="favList" />
+        </property>
     </class>
 </hibernate-mapping>

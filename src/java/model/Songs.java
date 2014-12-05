@@ -19,6 +19,8 @@ public class Songs  implements java.io.Serializable {
      private Date uploadedOn;
      private String path;
      private Integer uploadedBy;
+     private Integer fav_count;
+     boolean isFav;
     public Songs() {
     }
 
@@ -26,7 +28,7 @@ public class Songs  implements java.io.Serializable {
     public Songs(String path) {
         this.path = path;
     }
-    public Songs(String name, String artist, Double latitude, Double longitude, String genere, Date uploadedOn, String path) {
+    public Songs(String name, String artist, Double latitude, Double longitude, String genere, Date uploadedOn, String path, Integer uploadedBy, Integer favCount) {
        this.name = name;
        this.artist = artist;
        this.latitude = latitude;
@@ -34,6 +36,8 @@ public class Songs  implements java.io.Serializable {
        this.genere = genere;
        this.uploadedOn = uploadedOn;
        this.path = path;
+       this.uploadedBy = uploadedBy;
+       this.fav_count = favCount;
     }
    
     public Integer getSongId() {
@@ -103,7 +107,21 @@ public class Songs  implements java.io.Serializable {
         this.uploadedBy = uploadedBy;
     }
 
-
+    public Integer getFav_count() {
+        return this.fav_count;
+    }
+    
+    public void setFav_count(Integer fav_count) {
+        this.fav_count = fav_count;
+    }
+    
+    public boolean getIsFav() {
+        return this.isFav;
+    }
+    
+    public void setIsFav(boolean isFav) {
+        this.isFav = isFav;
+    }
 }
 
 

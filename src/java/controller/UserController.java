@@ -38,7 +38,7 @@ public class UserController {
        try {
            
            System.out.println("In authenticate");
-           Session session = HibernateUtil.getSessionFactory().openSession();
+           Session session = HibernateUtil.getSessionFactory().getCurrentSession();
            session.beginTransaction();
            String hql = "FROM Users U WHERE U.email = '"+ email+"'";
            Query query = session.createQuery(hql);
@@ -73,6 +73,41 @@ public class UserController {
         return new BigInteger(130, random).toString(32);
       }
     }
+    
+   @RequestMapping (method = RequestMethod.POST, value = "/user/addfav/{songId}")
+   public @ResponseBody Integer addToFav(@RequestHeader("x-auth-token") String Token, @PathVariable int songId){
+       try{
+            boolean isAuthenticated = AuthenticateUser.isAuthenticated(Token);
+            if(isAuthenticated){     
+                Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+                session.beginTransaction();
+                String hql = "FROM Users U WHERE U.access_token = '"+ Token+ "'";
+                 Query query = session.createQuery(hql);
+                 List users = query.list();
+                 if(users.size()>0){
+                    Users u = (Users)users.get(0);
+                    String favList = u.getFavList();
+                    if(favList.equals("")){
+                        favList = ""+songId;
+                    }
+                    else{
+                        favList=favList+","+songId;
+                    }
+                    
+                    Query updateQuery = session.createQuery("update Users U set U.favList = '"+favList+"' where U.userId = "+u.getUserId());
+                    int result = updateQuery.executeUpdate();
+                    Query updateSongQuery = session.createQuery("update Songs S set S.fav_count = fav_count+1 where S.songId = "+songId);
+                    updateSongQuery.executeUpdate();
+                    session.getTransaction().commit();
+                    return result;
+                 }
+           }
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+       return null;
+   }
   
 }
     

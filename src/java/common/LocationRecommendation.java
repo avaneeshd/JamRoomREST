@@ -48,7 +48,7 @@ public class LocationRecommendation {
              b4= b[3][1];
         }
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
            
         String hql = "From Songs S WHERE"
